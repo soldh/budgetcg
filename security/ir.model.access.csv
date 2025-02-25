@@ -6,3 +6,6 @@ access_crossovered_budget_accountant,crossovered.budget accountant,model_crossov
 access_crossovered_budget_lines_accountant,crossovered.budget.lines accountant,model_crossovered_budget_lines,account.group_account_user,1,1,1,1
 access_budget,crossovered.budget.lines manager,model_crossovered_budget_lines,base.group_user,1,1,1,0
 access_budget_distribution,cg.budget.distribution,model_cg_budget_distribution,base.group_user,1,1,1,1
+access_cg_budget_expense_user,Budget Expense User,model_cg_budget_expense,group_budget_user,1,1,1,0
+access_cg_budget_expense_manager,Budget Expense Manager,model_cg_budget_expense,group_budget_manager,1,1,1,1
+

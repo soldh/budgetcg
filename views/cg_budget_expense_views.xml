@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cg_budget_expense_tree" model="ir.ui.view">
+        <field name="name">cg.budget.expense.tree</field>
+        <field name="model">cg.budget.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Budget Expense">
+                <field name="name"/>
+                <field name="user_id" options="{'no_create': True}"/>
+                <field name="expense_date" options="{'no_create': True}"/>
+                <field name="analytic_account_id" options="{'no_create': True}"/>
+                <field name="budget_id" options="{'no_create': True}"/>
+                <field name="budget_position_reference_id" options="{'no_create': True}"/>
+<!--                <field name="budget_distribution_id" options="{'no_create': True}"/>-->
+                <field name="company_id" options="{'no_create': True}"/>
+                <field name="description"/>
+                <field name="amount"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cg_budget_expense_form" model="ir.ui.view">
+        <field name="name">cg.budget.expense.form</field>
+        <field name="model">cg.budget.expense</field>
+        <field name="arch" type="xml">
+            <form string="Budget Expense">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,validate,reviewed,Done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description" string="Description"/>
+                            <field name="user_id"/>
+                            <field name="expense_date"/>
+                            <field name="analytic_account_id" options="{'no_create': True}"/>
+                            <field name="budget_id" options="{'no_create': True}"/>
+                            <field name="budget_position_reference_id" options="{'no_create': True}"/>
+                            <field name="budget_distribution_id" options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="planned_amount"/>
+                            <field name="remaining_amount"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_cg_budget_expense" model="ir.actions.act_window">
+        <field name="name">Budget Expenses</field>
+        <field name="res_model">cg.budget.expense</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Budget Expense.
+            </p>
+        </field>
+    </record>
+
+
+
+    <menuitem id="menu_cg_budget_expense"
+              name="Budget Expenses"
+              parent="account.menu_finance_entries_management"
+              action="action_cg_budget_expense"
+              sequence="70"
+              groups="account.group_account_manager"/>
+
+</odoo>

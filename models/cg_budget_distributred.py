@@ -7,6 +7,7 @@ class BudgetDistribution(models.Model):
     _name = 'cg.budget.distribution'
     _description = 'Budget Distribution'
 
+    name =  fields.Char(string='Distribute code', required=True)
     budget_post_id = fields.Many2one('account.budget.post', string="Budget Post", ondelete='cascade')
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company)
     planned_amount = fields.Monetary(string='Planned Amount', currency_field='currency_id')

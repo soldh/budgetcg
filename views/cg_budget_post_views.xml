@@ -16,6 +16,7 @@
                 <page string="Budget Distribution">
                     <field name="budget_distribution_ids" widget="one2many_list">
                         <tree editable="bottom">
+                            <field name="name"/>
                             <field name="company_id"/>
                             <field name="planned_amount" sum="total_planned_amount"/>
                             <field name="practical_amount" sum="total_practical_amount"/>
