@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_budget_post_form_inherit" model="ir.ui.view">
+        <field name="name">account.budget.post.form.inherit</field>
+        <field name="model">account.budget.post</field>
+        <field name="inherit_id" ref="view_budget_post_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <field name="total_planned_amount"/>
+                <field name="total_left_to_spend"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Budget Distribution">
+                    <field name="budget_distribution_ids" widget="one2many_list">
+                        <tree editable="bottom">
+                            <field name="company_id"/>
+                            <field name="planned_amount" sum="total_planned_amount"/>
+                            <field name="practical_amount" sum="total_practical_amount"/>
+                            <field name="left_to_spend" sum="total_left_to_spend"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

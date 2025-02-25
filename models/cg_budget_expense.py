@@ -1,11 +1,9 @@
-from asyncore import write
-
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
 class BudgetExpense(models.Model):
-    _name = 'budget.expense'
+    _name = 'cg.budget.expense'
     _description = 'Budget Expense'
     _inherit = ['mail.thread']
 
